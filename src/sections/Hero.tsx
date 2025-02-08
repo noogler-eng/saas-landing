@@ -42,7 +42,7 @@ export default function Hero() {
         <img
           src={noodle}
           width={230}
-          className="hidden xl:flex absolute -bottom-4 z-20 -right-4 rotate-30"
+          className="hidden xl:flex absolute -bottom-4 -right-4 rotate-30"
         />
       </div>
     </div>
