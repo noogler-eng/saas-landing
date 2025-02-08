@@ -5,7 +5,7 @@ import star from "../assets/star.png";
 
 export default function SignUp() {
   return (
-    <div className="flex flex-col gap-5 items-center w-full overflow-x-hidden bg-gradient-to-b from-[#fff] to-[#D2DCFF] p-8 relative">
+    <div className="flex flex-col gap-5 items-center w-full overflow-x-hidden bg-gradient-to-b from-[#fff] to-[#D2DCFF] p-8 relative overflow-y-hidden">
       <h1 className="text-3xl md:text-5xl font-bold tracking-tighter">
         Sign up for free today
       </h1>
