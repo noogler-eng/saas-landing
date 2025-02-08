@@ -4,7 +4,7 @@ import logo from "../assets/logosaas.png";
 
 export default function Header() {
   return (
-    <div className="w-full flex flex-col justify-center items-center sticky top-0">
+    <div className="w-full flex flex-col justify-center items-center sticky top-0 backdrop-blur-sm">
       <div className="w-full flex items-center justify-center gap-2 text-white bg-black text-sm py-2">
         <div className=" flex items-center gap-4">
           <p className="hidden md:flex text-gray-300">
