@@ -37,8 +37,8 @@ export default function Hero() {
         <img src={cylinderImage} width={200} className="hidden md:flex" />
         <img
           src={noodle}
-          width={200}
-          className="hidden xl:flex absolute -bottom-16 z-20 -right-10 rotate-30"
+          width={230}
+          className="hidden xl:flex absolute -bottom-24 z-20 -right-16 rotate-10"
         />
       </div>
     </div>
