@@ -1,8 +1,19 @@
+import { useRef } from "react";
 import productImage from "../assets/product-image.png";
 import pyramid from "../assets/pyramid.png";
 import tube from "../assets/tube.png";
+import { motion, useScroll, useTransform } from "motion/react";
 
 export default function ProductShowcase() {
+  const hero_ref = useRef(null);
+
+  const { scrollYProgress } = useScroll({
+    target: hero_ref,
+    offset: ["start end", "end start"],
+  });
+
+  const translateY = useTransform(scrollYProgress, [0, 1], [150, -150]);
+
   return (
     <div className="px-8 flex flex-col items-center w-full bg-gradient-to-b from-[#fff] to-[#D2DCFF] pt-24 pb-12 gap-8">
       <div className="text-sm border rounded-lg border-gray-300 w-fit px-3">
@@ -17,13 +28,19 @@ export default function ProductShowcase() {
           progress and motivate your efforts.
         </p>
         <img src={productImage} className="w-[100%]" />
-        <img
+        <motion.img
           src={pyramid}
           className="hidden md:flex absolute md:w-[200px] xl:w-[250px] md:top-20 xl:-top-0 -right-10"
+          style={{
+            translateY: translateY,
+          }}
         />
-        <img
+        <motion.img
           src={tube}
           className="hidden md:flex absolute md:w-[200px]  xl:w-[250px] top-110 -left-30"
+          style={{
+            translateY: translateY,
+          }}
         />
       </div>
     </div>

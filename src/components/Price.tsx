@@ -1,4 +1,5 @@
 import { Check } from "lucide-react";
+import { motion } from "motion/react";
 
 export default function Price({
   item,
@@ -19,11 +20,24 @@ export default function Price({
       } rounded-xl flex flex-col gap-5 drop-shadow-2xl h-fit`}
     >
       <div className="flex justify-between items-center">
-        <div className="text-gray-400 text-sm font-semibold">{item.tierName}</div>
+        <div className="text-gray-400 text-sm font-semibold">
+          {item.tierName}
+        </div>
         {item.special ? (
-          <div className="border border-gray-500 rounded-xl py-1 px-2 text-xs">
+          <motion.div
+            className="border border-gray-500 rounded-xl py-1 px-2 text-xs bg-[linear-gradient(to_right,#DD7DDF,#E1CD86,#71C2EF,#3BFFFF,#DD7DDF)] [background-size:200%] text-transparent bg-clip-text font-medium"
+            animate={{
+              backgroundPositionX: "-100%",
+              transition: {
+                repeat: Infinity,
+                ease: "linear",
+                repeatType: "loop",
+                duration: 6
+              },
+            }}
+          >
             {item.special}
-          </div>
+          </motion.div>
         ) : (
           ""
         )}

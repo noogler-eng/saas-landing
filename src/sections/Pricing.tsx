@@ -1,5 +1,4 @@
 import Price from "../components/Price";
-
 export default function Pricing() {
   const pricingTier: {
     bg: string;

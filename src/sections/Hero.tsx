@@ -3,10 +3,33 @@ import { MoveRight } from "lucide-react";
 import cogImage from "../assets/cog.png";
 import cylinderImage from "../assets/cylinder.png";
 import noodle from "../assets/noodle.png";
+import {
+  motion,
+  useScroll,
+  useTransform,
+  // useMotionValueEvent,
+} from "motion/react";
+import { useRef } from "react";
 
 export default function Hero() {
+  const hero_ref = useRef(null);
+
+  const { scrollYProgress } = useScroll({
+    target: hero_ref,
+    offset: ["start end", "end start"],
+  });
+
+  const translateY = useTransform(scrollYProgress, [0, 1], [150, -150]);
+
+  // useMotionValueEvent(translateY, "change", (latestValue) => {
+  //   console.log(latestValue);
+  // });
+
   return (
-    <div className="flex flex-col p-8 md:flex-row md:pl-12 md:pt-12 md:pr-0 md:pb-12 xl:pr-8 bg-[radial-gradient(ellipse_200%_100%_at_bottom_left,#183EC2,#EAEEFE_66%)] items-center -z-10">
+    <div
+      className="flex flex-col p-8 md:flex-row md:pl-12 md:pt-12 md:pr-0 md:pb-12 xl:pr-8 bg-[radial-gradient(ellipse_200%_100%_at_bottom_left,#183EC2,#EAEEFE_66%)] items-center -z-10"
+      ref={hero_ref}
+    >
       <div className="flex flex-col gap-8 md:w-1/2 lg:px-8 xl:px-24">
         <div className="text-sm border rounded-lg border-gray-300 w-fit px-3">
           version 2.0 is here
@@ -29,20 +52,35 @@ export default function Hero() {
         </div>
       </div>
       <div className="pt-10 md:pt-0 md:flex-grow md:h-[700px] relative overflow-hidden">
-        <img
+        <motion.img
           src={cogImage}
           width={500}
           className="md:absolute md:h-[550px] md:pl-40 xl:pl-24 md:w-auto md:max-w-none top-10"
+          animate={{
+            translateY: [-30, 30],
+            transition: {
+              duration: 4,
+              repeat: Infinity,
+              repeatType: "mirror",
+              ease: "easeInOut",
+            },
+          }}
         />
-        <img
+        <motion.img
           src={cylinderImage}
           width={200}
           className="hidden md:flex top-0 left-0"
+          style={{
+            translateY: translateY,
+          }}
         />
-        <img
+        <motion.img
           src={noodle}
           width={230}
           className="hidden xl:flex absolute -bottom-4 -right-4 rotate-30"
+          style={{
+            translateY: translateY,
+          }}
         />
       </div>
     </div>
